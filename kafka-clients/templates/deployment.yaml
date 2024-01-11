@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: kafka-consumer
+  name: kafka-consumer
+  namespace: kafka-clients
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-consumer
+  template:
+    metadata:
+      labels:
+        app: kafka-consumer
+    spec:
+      containers:
+      - image: quay.io/strimzi/kafka:0.39.0-kafka-3.6.1
+        name: kafka
+        command:
+        - sh 
+        - -c 
+        - "bin/kafka-console-consumer.sh --bootstrap-server {{ .Values.kafka.bootstrapServers }} --topic {{ .Values.kafka.topicName }} --group {{ .Values.kafka.consumer.group }}" 
+

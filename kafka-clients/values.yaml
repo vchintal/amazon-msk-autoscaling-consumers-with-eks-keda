@@ -1,0 +1,5 @@
+kafka:
+  topicName: "sample-topic"
+  bootstrapServers: "localhost:9092"
+  consumer:
+    group: defaultConsumerGroup

@@ -1,0 +1,18 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: kafka-scaledobject
+  namespace: kafka-clients
+spec:
+  scaleTargetRef:
+    name: kafka-consumer
+  pollingInterval: 10
+  minReplicaCount:  1
+  maxReplicaCount:  50
+  triggers:
+  - type: kafka
+    metadata:
+      bootstrapServers: {{ .Values.kafka.bootstrapServers }}
+      consumerGroup: {{ .Values.kafka.consumer.group }}
+      topic: {{ .Values.kafka.topicName }}
+      lagThreshold: "5"
