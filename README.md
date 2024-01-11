@@ -11,7 +11,7 @@ Ensure that you have the following tools installed locally:
 
 ```sh 
 # Git clone the repo and cd into it
-git clone https://github.com/aws-samples/amazon-msk-autoscaling-consumers-with-eks-keda
+git clone https://github.com/vchintal/amazon-msk-autoscaling-consumers-with-eks-keda
 cd amazon-msk-autoscaling-consumers-with-eks-keda
 
 # Terraform 
